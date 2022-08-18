@@ -1,0 +1,16 @@
+<div>
+    <p>Road Moves Portal</p>
+</div>
+<input #search autocorrect="off" autocapitalize="off" spellcheck="off" type="text" class="form-control">{{address}}
+<div style="width: 640px; height: 900px; overflow: auto;margin:auto">
+<agm-map [zoom]="12" [latitude]="lat" [longitude]="lng" (mapReady)="onMapReady($event)"> </agm-map><br>
+</div>
+<button type="button" (click)="clearDrawanArea()">Clear</button>
+<button type="button" (click)="saveSelectedArea()" [disabled]="!gmapImgSrc">Save</button><br /><br />
+<img *ngIf="gmapImgSrc" [src]="gmapImgSrc" id="selectedAreaimg" crossorigin="anonymous"   />
+<div *ngIf="selectedAreaCoords">
+    <label>Selected Area Coords:</label>
+    <ul>
+        <li *ngFor="let coord of selectedAreaCoords">{{coord}}</li>
+    </ul>
+</div>
